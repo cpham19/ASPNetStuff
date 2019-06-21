@@ -1,0 +1,11 @@
+C:\Users\calvin\source\repos\CSharpLecture1\bin\Debug\netcoreapp2.1\CSharpLecture1.deps.json
+C:\Users\calvin\source\repos\CSharpLecture1\bin\Debug\netcoreapp2.1\CSharpLecture1.runtimeconfig.json
+C:\Users\calvin\source\repos\CSharpLecture1\bin\Debug\netcoreapp2.1\CSharpLecture1.runtimeconfig.dev.json
+C:\Users\calvin\source\repos\CSharpLecture1\bin\Debug\netcoreapp2.1\CSharpLecture1.dll
+C:\Users\calvin\source\repos\CSharpLecture1\bin\Debug\netcoreapp2.1\CSharpLecture1.pdb
+C:\Users\calvin\source\repos\CSharpLecture1\obj\Debug\netcoreapp2.1\CSharpLecture1.csprojAssemblyReference.cache
+C:\Users\calvin\source\repos\CSharpLecture1\obj\Debug\netcoreapp2.1\CSharpLecture1.csproj.CoreCompileInputs.cache
+C:\Users\calvin\source\repos\CSharpLecture1\obj\Debug\netcoreapp2.1\CSharpLecture1.AssemblyInfoInputs.cache
+C:\Users\calvin\source\repos\CSharpLecture1\obj\Debug\netcoreapp2.1\CSharpLecture1.AssemblyInfo.cs
+C:\Users\calvin\source\repos\CSharpLecture1\obj\Debug\netcoreapp2.1\CSharpLecture1.dll
+C:\Users\calvin\source\repos\CSharpLecture1\obj\Debug\netcoreapp2.1\CSharpLecture1.pdb

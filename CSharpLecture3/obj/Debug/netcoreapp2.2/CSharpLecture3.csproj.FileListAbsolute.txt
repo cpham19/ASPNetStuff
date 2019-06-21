@@ -1,0 +1,11 @@
+C:\Users\calvin\source\repos\CSharpLecture3\bin\Debug\netcoreapp2.2\CSharpLecture3.deps.json
+C:\Users\calvin\source\repos\CSharpLecture3\bin\Debug\netcoreapp2.2\CSharpLecture3.runtimeconfig.json
+C:\Users\calvin\source\repos\CSharpLecture3\bin\Debug\netcoreapp2.2\CSharpLecture3.runtimeconfig.dev.json
+C:\Users\calvin\source\repos\CSharpLecture3\bin\Debug\netcoreapp2.2\CSharpLecture3.dll
+C:\Users\calvin\source\repos\CSharpLecture3\bin\Debug\netcoreapp2.2\CSharpLecture3.pdb
+C:\Users\calvin\source\repos\CSharpLecture3\obj\Debug\netcoreapp2.2\CSharpLecture3.csprojAssemblyReference.cache
+C:\Users\calvin\source\repos\CSharpLecture3\obj\Debug\netcoreapp2.2\CSharpLecture3.csproj.CoreCompileInputs.cache
+C:\Users\calvin\source\repos\CSharpLecture3\obj\Debug\netcoreapp2.2\CSharpLecture3.AssemblyInfoInputs.cache
+C:\Users\calvin\source\repos\CSharpLecture3\obj\Debug\netcoreapp2.2\CSharpLecture3.AssemblyInfo.cs
+C:\Users\calvin\source\repos\CSharpLecture3\obj\Debug\netcoreapp2.2\CSharpLecture3.dll
+C:\Users\calvin\source\repos\CSharpLecture3\obj\Debug\netcoreapp2.2\CSharpLecture3.pdb
