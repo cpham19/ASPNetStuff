@@ -18,9 +18,9 @@ namespace Homework1
             topics = new List<Topic>();
         }
 
-        public void AddTopic(string name)
+        public void AddTopic(string name, string content)
         {
-            topics.Add(new Topic(topicIdSeed++, name));
+            topics.Add(new Topic(topicIdSeed++, name, content));
         }
     }
 
@@ -28,14 +28,43 @@ namespace Homework1
     {
         public int TopicID { get;}
         public string TopicName { get; set; }
+        public string TopicDate { get; set; }
 
-        public Topic(int id, string name)
+        public string TopicContent { get; set; }
+
+        private int ReplyIdSeed = 1;
+        public List<Reply> replies;
+
+        public Topic(int id, string name, string content)
         {
             TopicID = id;
             TopicName = name;
+            DateTime date = DateTime.Now;
+            TopicDate = date.ToString("MM/dd/yyyy hh:mm tt");
+            TopicContent = content;
+            replies = new List<Reply>();
+        }
+
+        public void AddReply(string content)
+        {
+            replies.Add(new Reply(ReplyIdSeed++,content));
         }
     }
 
+    public class Reply
+    {
+        public int ReplyID { get; }
+        public string ReplyContent { get; set; }
+        public string ReplyDate { get; set; }
+
+        public Reply(int id, string content)
+        {
+            ReplyID = id;
+            ReplyContent = content;
+            DateTime date = DateTime.Now;
+            ReplyDate = date.ToString("MM/dd/yyyy hh:mm tt");
+        }
+    }
 
     class Program
     {
@@ -108,7 +137,7 @@ namespace Homework1
                 {
                     for (int i = 0; i < forum.topics.Count; i++)
                     {
-                        Console.WriteLine($"{forum.topics[i].TopicID}) Topic - {forum.topics[i].TopicName}");
+                        Console.WriteLine($"{forum.topics[i].TopicID}) Topic - {forum.topics[i].TopicName} (Posted on {forum.topics[i].TopicDate})");
                     }
                 }
 
@@ -126,7 +155,8 @@ namespace Homework1
                     }
                     else
                     {
-                        Console.WriteLine($"You have selected Topic #{number}");
+                        Console.WriteLine();
+                        PrintTopicMenu(forum.topics[number - 1]);
                     }
                 }
                 // Create a new topic
@@ -136,6 +166,43 @@ namespace Homework1
                     CreateNewTopic(forum);
                 }
                 // Go back to main menu
+                else if (input == "b")
+                {
+                    break;
+                }
+                // Prompts the user for making a wrong choice
+                else
+                {
+                    Console.WriteLine("Please enter a proper menu option!");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        static void PrintTopicMenu(Topic topic)
+        {
+            while (true)
+            {
+                Console.WriteLine($"Topic - {topic.TopicName} (Posted on {topic.TopicDate})");
+                Console.WriteLine($"{topic.TopicContent}");
+                if (topic.replies.Count != 0)
+                {
+                    for (int i = 0; i < topic.replies.Count; i++)
+                    {
+                        Console.WriteLine($"Reply ({topic.replies[i].ReplyDate}): {topic.replies[i].ReplyContent}");
+                    }
+                }
+                Console.WriteLine("n) Create New Reply");
+                Console.WriteLine("b) Back to Forum Menu");
+                string input = Console.ReadLine();
+
+                // Create a new reply
+                if (input == "n")
+                {
+                    Console.WriteLine();
+                    CreateNewReply(topic);
+                }
+                // Go back to forum menu
                 else if (input == "b")
                 {
                     break;
@@ -161,8 +228,18 @@ namespace Homework1
         {
             Console.Write("Please enter the topic name: ");
             string name = Console.ReadLine();
+            Console.Write("Please enter the topic content: ");
+            string content = Console.ReadLine();
 
-            forum.AddTopic(name);
+            forum.AddTopic(name, content);
+        }
+
+        static void CreateNewReply(Topic topic)
+        {
+            Console.Write("Please enter the reply: ");
+            string content = Console.ReadLine();
+
+            topic.AddReply(content);
         }
     }
 }
