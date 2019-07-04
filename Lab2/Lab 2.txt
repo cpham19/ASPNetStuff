@@ -21,7 +21,7 @@ WHERE Id IN
     SELECT EmployeeId FROM Projects p
  INNER JOIN ProjectMembers pm
     ON (p.Id = pm.ProjectId)
-    WHERE p.Name = "Blue"
+    WHERE p.Name = "Blue")
 
 5) SELECT concat(A.FirstName, " ", A.LastName) as Name 
 FROM Employees A, Employees B 
