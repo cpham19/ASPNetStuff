@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<Contact>
+
+<h1>Contacts</h1>
+
+<p><a href="Home/Add">Add Contact</a></p>
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid orange;
+        padding: 10px;
+        text-align: left;
+    }
+</style>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contact in Model)
+        {
+            <tr>
+                <td><a href="Home/View/@contact.ContactId">@contact.Name</a></td>
+                <td>@contact.PhoneNumber</td>
+            </tr>
+        }
+    </tbody>
+</table>

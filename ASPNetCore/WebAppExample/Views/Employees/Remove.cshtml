@@ -1,0 +1,7 @@
+﻿@model  Employee
+
+<h1>Are you sure you want to remove Employee #@Model.EmployeeId @Model.Name?</h1>
+
+<form method="post">
+  <button>Yes</button> <a class="nav-link text-dark" asp-area="" asp-controller="Employees" asp-action="List">No</a>
+</form>

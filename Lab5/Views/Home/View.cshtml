@@ -1,0 +1,36 @@
+﻿@model Contact
+
+<h1>Viewing Contact @Model.Name.</h1>
+
+<style>
+    table {
+        border-collapse: collapse;
+    }   
+
+    th, td {
+        border: 1px solid orange;
+        padding: 10px;
+        text-align: left;
+    }
+</style>
+
+<form method="post" id="my_form">
+    <table class="table">
+        @foreach (var property in typeof(Contact).GetProperties())
+        {
+            @if (property.GetValue(@Model, null) != null) {
+                <tr>
+                    <td>@property.Name</td>
+                    <td>@(property.GetValue(@Model, null))</td>
+                    <td></td>
+                </tr>
+            }
+           
+        }
+        <tr>
+            <td><input type="text" name="NewPropName" form="my_form" placeholder="New Property Name"></td>
+            <td><input type="text" name="NewPropValue" form="my_form" placeholder="New Property Value"></td>
+            <td><button form="my_form">Add Field</button></td>
+        </tr>
+    </table>
+ </form>

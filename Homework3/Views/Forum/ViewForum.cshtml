@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Forum";
+}
+@model Forum
+
+<h1>@Model.ForumName</h1>
+
+<a href="@Model.ForumId/AddTopic">Add New Topic</a><br/>
+<a href="/">Back</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Topic Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var topic in Model.Topics)
+        {
+            <tr>
+                <td><a href="@Model.ForumId/@topic.TopicId/">@topic.TopicName</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

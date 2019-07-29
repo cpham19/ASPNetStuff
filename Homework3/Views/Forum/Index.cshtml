@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Forum Page";
+}
+
+@model List<Forum>
+
+<h1>Forums</h1>
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid orange;
+        padding: 10px;
+        text-align: left;
+    }
+</style>
+
+<a href="Forum/Add">Add New Forum</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Forum Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var forum in Model)
+        {
+            <tr>
+                <td><a href="Forum/View/@forum.ForumId">@forum.ForumName</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
