@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using LoginAndRegister.Models;
+using Fakebook.Models;
 
-namespace LoginAndRegister.Controllers
+namespace Fakebook.Controllers
 {
     public class HomeController : Controller
     {

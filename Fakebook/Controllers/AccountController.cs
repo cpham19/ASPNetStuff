@@ -1,14 +1,14 @@
 ﻿using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using LoginAndRegister.Models;
-using AccountService = LoginAndRegister.Services.AccountService;
+using Fakebook.Models;
+using AccountService = Fakebook.Services.AccountService;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 
-namespace LoginAndRegister.Controllers
+namespace Fakebook.Controllers
 {
     public class AccountController : Controller
     {
