@@ -16,5 +16,7 @@ namespace Fakebook.Services
         }
 
         public DbSet<Person> Persons { get; set; }
+        public DbSet<TimelinePost> TimelinePosts { get; set; }
+        public DbSet<ReplyPost> ReplyPosts { get; set; }
     }
 }

@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Fakebook.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
 
 namespace Fakebook
 {
@@ -34,6 +36,8 @@ namespace Fakebook
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<TimelineService>();
+            services.AddScoped<SearchService>();
             services.AddScoped<AccountService>();
         }
 
@@ -69,6 +73,16 @@ namespace Fakebook
                     name: "register",
                     defaults: new { controller = "Account", action = "Register" },
                     template: "Register/");
+
+                routes.MapRoute(
+                    name: "search",
+                    defaults: new { controller = "Search", action = "Index" },
+                    template: "Search/{**name}");
+
+                routes.MapRoute(
+                  name: "search2",
+                  defaults: new { controller = "Search", action = "Search" },
+                  template: "Search/{**name}");
             });
         }
     }

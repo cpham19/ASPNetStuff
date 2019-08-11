@@ -1,0 +1,4 @@
+﻿DROP TABLE IF EXISTS Persons;
+DROP TABLE IF EXISTS [__EFMigrationsHistory];
+
+GO

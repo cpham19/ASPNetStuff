@@ -2,13 +2,17 @@
     ViewData["Title"] = "Register Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Register</h1>
+<style>
+    .text-center {
+        width: 100%;
+        padding: 12px 300px;
+    }
+</style>
 
-    <form method="post">
-        Name: <input type="text" name="Name" /> <br />
-        Username: <input type="text" name="Username" /> <br />
-        Password: <input type="password" name="Password" /><br />
-        <button>Register</button><a href="Login">Login</a>
-    </form>
-</div>
+<form method="post" class="text-center">
+    <h1 class="display-4">Register</h1>
+    <input type="text" name="Name" class="form-control" placeholder="Name"/> <br />
+    <input type="text" name="Username" class="form-control" placeholder="Username"/> <br />
+    <input type="password" name="Password" class="form-control" placeholder="Password"/><br />
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button><a href="Login">Login</a>
+</form>

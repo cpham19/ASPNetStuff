@@ -7,6 +7,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
+using System.Threading;
 
 namespace Fakebook.Controllers
 {
@@ -19,6 +20,7 @@ namespace Fakebook.Controllers
             this.accountService = accountService;
         }
 
+        // Used for directing to login page
         [HttpGet]
         public IActionResult Login()
         {
@@ -32,6 +34,7 @@ namespace Fakebook.Controllers
             }
         }
 
+        // Used for logging into the site
         [HttpPost]
         public async Task<IActionResult> Login(string username, string password, string returnUrl)
         {
@@ -44,19 +47,21 @@ namespace Fakebook.Controllers
             if (identity == null)
                 return RedirectToAction(nameof(Login));
 
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(identity),
-                new AuthenticationProperties());
+            var claimsPrincipal = new ClaimsPrincipal(identity);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal, new AuthenticationProperties());
 
             return string.IsNullOrWhiteSpace(returnUrl) ? RedirectToAction("Index", "Home") : (IActionResult)LocalRedirect(returnUrl);
         }
 
+        // Used for logging out and clearing cookies
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
         }
 
+        // Used for directing to register page
         public IActionResult Register()
         {
             if (User.Identity.IsAuthenticated)
@@ -69,6 +74,7 @@ namespace Fakebook.Controllers
             }
         }
 
+        // Used for registering the user and directing to login page afterwards
         [HttpPost]
         public IActionResult Register(Person person)
         {

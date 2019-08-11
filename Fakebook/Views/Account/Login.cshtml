@@ -1,12 +1,16 @@
 ﻿@{
     ViewData["Title"] = "Login Page";
 }
+<style>
+    .text-center {
+        width:100%;
+        padding: 12px 300px;
+    }
+</style>
 
-<div class="text-center">
+<form method="post" class="text-center">
     <h1 class="display-4">Login</h1>
-    <form method="post">
-        Username: <input type="text" name="username" /> <br />
-        Password: <input type="password" name="password" /><br />
-        <button>Login</button><a href="Register">Register</a>
-    </form>
-</div>
+    <input type="text" name="username" class="form-control" placeholder="Username" /> <br />
+    <input type="password" name="password" class="form-control" placeholder="Password" /><br />
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button> <a href="Register">Register</a>
+</form>

@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Search Page";
+}
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3">Search for people</h1>
+    </div>
+</div>
+
+<form method="post">
+    <input type="text" name="name" class="form-control" placeholder="Name of Person"/><button class="btn btn-primary" type="submit">Find</button>
+</form>
+<br/>
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        @foreach (var person in ViewBag.Persons) {
+        <div class="col-md-4">
+            <h2>@person.Name</h2>
+            <p>Person's description</p>
+            <p><a class="btn btn-secondary" href="#" role="button">Add Friend</a></p>
+        </div>
+        }
+    </div>
+    <hr>
+</div> <!-- /container -->
