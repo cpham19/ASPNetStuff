@@ -8,10 +8,12 @@ namespace Fakebook.Controllers
 {
     public class SearchController : Controller
     {
-        private readonly SearchService searchService;
-        public SearchController(SearchService searchService)
+        private readonly UserService userService;
+        private readonly TimelineService timelineService;
+        public SearchController(UserService userService, TimelineService timelineService)
         {
-            this.searchService = searchService;
+            this.userService = userService;
+            this.timelineService = timelineService;
         }
 
         // This is the page that when the user clicks Search button for "first time" or when they type something in the url (Search/"Name of Person")
@@ -23,13 +25,14 @@ namespace Fakebook.Controllers
                 if (name == null || name == "")
                 {
                     // Search all people if no parameter
-                    ViewBag.Persons = searchService.GetPersons(User.Identity.GetPersonId());
+                    ViewBag.Persons = userService.GetPersons(User.Identity.GetPersonId());
                     return View();
                 }
                 else
                 {
+                    ViewBag.name = name;
                     // Search for people based on given parameter
-                    ViewBag.Persons = searchService.GetPersonsBasedOnName(User.Identity.GetPersonId(), name);
+                    ViewBag.Persons = userService.GetPersonsBasedOnName(User.Identity.GetPersonId(), name);
                     return View("Index", name);
                 }
             }
@@ -43,8 +46,35 @@ namespace Fakebook.Controllers
         [HttpPost]
         public IActionResult Search(string name)
         {
-            ViewBag.Persons = searchService.GetPersonsBasedOnName(User.Identity.GetPersonId(), name);
-            return View("Index", name);
+            ViewBag.name = name;
+            ViewBag.Persons = userService.GetPersonsBasedOnName(User.Identity.GetPersonId(), name);
+            return RedirectToAction(nameof(Index), new { name = name });
+            //return View("Index", name);
+        }
+
+        [HttpGet]
+        public IActionResult ViewUser(string name)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (name == null || name == "")
+                {
+                    // Don't View anything because no paramater. Search all people if no parameter
+                    ViewBag.Persons = userService.GetPersons(User.Identity.GetPersonId());
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    // Search for person based on given parameter
+                    var person = userService.GetPerson(name);
+                    person.TimelinePosts = timelineService.GetTimelinePosts(person.PersonId);
+                    return View(person);
+                }
+            }
+            else
+            {
+                return Redirect("/Account/Login");
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

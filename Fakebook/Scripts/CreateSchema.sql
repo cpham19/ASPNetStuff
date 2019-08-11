@@ -25,9 +25,9 @@ CREATE TABLE [TimelinePosts] (
 	[PosterName] nvarchar(max) NULL,
     [Description] nvarchar(max) NULL,
 	[DatePosted] datetime2 NOT NULL,
-	[PerId] int NOT NULL,
+	[PersonId] int NOT NULL,
     CONSTRAINT [PK_TimelinePosts] PRIMARY KEY ([TimelinePostId]),
-    CONSTRAINT [FK_TimelinePosts_Persons_PerId] FOREIGN KEY ([PerId]) REFERENCES [Persons] ([PersonId]) ON DELETE NO ACTION
+    CONSTRAINT [FK_TimelinePosts_Persons_PersonId] FOREIGN KEY ([PersonId]) REFERENCES [Persons] ([PersonId]) ON DELETE NO ACTION
 );
 
 GO
@@ -38,7 +38,7 @@ CREATE TABLE [ReplyPosts] (
     [Description] nvarchar(max) NULL,
 	[DatePosted] datetime2 NOT NULL,
 	[TimelinePostId] int NOT NULL,
-	[PerId] int NOT NULL,
+	[PersonId] int NOT NULL,
     CONSTRAINT [PK_ReplyPosts] PRIMARY KEY ([ReplyPostId]),
     CONSTRAINT [FK_ReplyPosts_TimelinePosts_TimelinePostId] FOREIGN KEY ([TimelinePostId]) REFERENCES [TimelinePosts] ([TimelinePostId]) ON DELETE NO ACTION
 );

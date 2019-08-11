@@ -5,13 +5,18 @@ using Fakebook.Models;
 // Used for searching people
 namespace Fakebook.Services
 {
-    public class SearchService
+    public class UserService
     {
         private readonly AppDbContext db;
 
-        public SearchService(AppDbContext db)
+        public UserService(AppDbContext db)
         {
             this.db = db;
+        }
+
+        public Person GetPerson(string name)
+        {
+            return db.Persons.Where(p => p.Name == name).SingleOrDefault();
         }
 
         // Getting a list of people excluding user

@@ -37,7 +37,7 @@ namespace Fakebook
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<TimelineService>();
-            services.AddScoped<SearchService>();
+            services.AddScoped<UserService>();
             services.AddScoped<AccountService>();
         }
 
@@ -83,6 +83,11 @@ namespace Fakebook
                   name: "search2",
                   defaults: new { controller = "Search", action = "Search" },
                   template: "Search/{**name}");
+
+                routes.MapRoute(
+                    name: "user",
+                    defaults: new { controller = "User", action = "ViewUser" },
+                    template: "User/{**name}");
             });
         }
     }

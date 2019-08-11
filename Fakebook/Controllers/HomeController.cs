@@ -37,7 +37,7 @@ namespace Fakebook.Controllers
         [HttpPost]
         public IActionResult Index(TimelinePost tp)
         {
-            tp.PerId = User.Identity.GetPersonId();
+            tp.PersonId = User.Identity.GetPersonId();
             tp.PosterName = User.Identity.GetName();
             tp.DatePosted = DateTime.Now;
             timelineService.AddTimelinePost(tp);

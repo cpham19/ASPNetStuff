@@ -22,9 +22,9 @@ namespace Fakebook.Services
         // Get user's timeline posts and their replies
         public List<TimelinePost> GetTimelinePosts(int id)
         {
-            List<TimelinePost> timelinePosts = db.TimelinePosts.Where(tp => tp.PerId == id).ToList();
+            List<TimelinePost> timelinePosts = db.TimelinePosts.Where(tp => tp.PersonId == id).OrderByDescending(tp => tp.DatePosted).ToList();
             foreach (var tp in timelinePosts) {
-                tp.Replies = db.ReplyPosts.Where(reply => reply.TimelinePostId == tp.TimelinePostId).ToList();
+                tp.Replies = db.ReplyPosts.Where(reply => reply.TimelinePostId == tp.TimelinePostId).OrderByDescending(reply => reply.DatePosted).ToList();
             }
             return timelinePosts;
         }
